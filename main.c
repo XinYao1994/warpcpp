@@ -14,4 +14,9 @@ int main(){
         key.key[i] = i * 2;
     }
     printKey(key);
+    uint32_t value = 0;
+    void *index = initpgm();
+    insertKey(index, key, value);
+    uint32_t ret = readKey(index, key);
+    printf("read done %d\n", ret);
 }

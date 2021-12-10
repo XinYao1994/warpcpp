@@ -25,6 +25,9 @@ typedef struct MyKey {
 extern "C" {
 #endif
 void printKey(MyKey key);
+void *initpgm();
+void insertKey(void *pgm, MyKey key, uint32_t value);
+uint32_t readKey(void *pgm, MyKey key);
 #ifdef __cplusplus
 }
 #endif
