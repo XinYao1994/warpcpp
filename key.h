@@ -17,11 +17,52 @@ typedef struct MyKey {
         }
         return x;
     }
+
+    bool operator ==(const MyKey& e) const {
+        uint64_t l = *this;
+        uint64_t r = e;
+        return l == r;
+    }
+
+    bool operator <(const MyKey& e) const {
+        uint64_t l = *this;
+        uint64_t r = e;
+        return l < r;
+    }
+
+    MyKey(int len){
+        this->len = len;
+        if(this->len){
+            this->key = new uint8_t[len];
+        }
+    }
+
+    // MyKey(){
+    //     return MyKey(0);
+    // }
+
 #endif /* end section for C++ only */
 }MyKey;
 
 
 #ifdef __cplusplus
+inline bool operator ==(const MyKey& lhs, const MyKey& rhs) {
+    uint64_t l = lhs;
+    uint64_t r = rhs;
+    return l == r;
+}
+
+inline bool operator <(const MyKey& lhs, const MyKey& rhs) {
+    uint64_t l = lhs;
+    uint64_t r = rhs;
+    return l < r;
+}
+
+// inline MyKey& operator +(const MyKey& lhs, int num) {
+//     lhs[lhs.len-1] = lhs[lhs.len-1] + num;
+//     return lhs;
+// }
+
 extern "C" {
 #endif
 void printKey(MyKey key);

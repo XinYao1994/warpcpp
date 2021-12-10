@@ -20,9 +20,29 @@ void insertKey(void *pgm, MyKey key, uint32_t value){
 
 uint32_t readKey(void *pgm, MyKey key){
     pgm::DynamicPGMIndex<uint64_t, uint32_t> * pgm_index = (pgm::DynamicPGMIndex<uint64_t, uint32_t> *)pgm;
-    uint32_t value = pgm_index->find(key)->second;
+    auto item = pgm_index->find(key);
+    uint32_t value = item->second;
     return value;
 }
+
+// void *initpgm(){
+//     pgm::DynamicPGMIndex<MyKey, uint32_t> * pgm_index = new pgm::DynamicPGMIndex<MyKey, uint32_t>();
+//     void *ret = (void *)pgm_index;
+//     return ret;
+// }
+
+// void insertKey(void *pgm, MyKey key, uint32_t value){
+//     pgm::DynamicPGMIndex<MyKey, uint32_t> * pgm_index = (pgm::DynamicPGMIndex<MyKey, uint32_t> *)pgm;
+//     pgm_index->insert_or_assign(key, value);
+//     printf("insert done\n");
+// }
+
+// uint32_t readKey(void *pgm, MyKey key){
+//     pgm::DynamicPGMIndex<MyKey, uint32_t> * pgm_index = (pgm::DynamicPGMIndex<MyKey, uint32_t> *)pgm;
+//     auto item = pgm_index->find(key);
+//     uint32_t value = item->second;
+//     return value;
+// }
 
 // int main(){
 //     MyKey key;
